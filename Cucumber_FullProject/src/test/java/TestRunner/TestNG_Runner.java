@@ -8,21 +8,26 @@ import io.cucumber.testng.CucumberOptions;
 
 
 @CucumberOptions(
-		features = {"D:\\EAI\\workspace\\Cucumber_FullProject\\Cucumber_FullProject\\Features"},
+		features = {"Features"},
 		glue = {"step_Definitions","Utilities"},
 				plugin= {
 	    "pretty",
-	    "html:D:\\EAI\\workspace\\Cucumber_FullProject\\Cucumber_FullProject\\target\\htmlReport\\cucumberReport.html ",
-	    "json:D:\\EAI\\workspace\\Cucumber_FullProject\\Cucumber_FullProject\\target\\jsonCucumberReport\\json "
+	    "html:target\\htmlReport\\cucumberReport.html ",
+	    "json:target\\jsonCucumberReport\\json "
 		}, 
 		
 		monochrome = false,
 		dryRun = false,
-		tags="@smoke and @regression"
+		tags="${cuke}"
 	)
 
 
 
 public class TestNG_Runner extends AbstractTestNGCucumberTests {
+
+	@Parameters("cuke")
+    @Override
+    public Object[][] scenarios() {
+        return super.scenarios();}
 
 }
